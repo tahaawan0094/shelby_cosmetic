@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f8efe8"/>
+      <stop offset="100%" stop-color="#f2d6cc"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)" />
+  <g transform="translate(1200,220)">
+    <ellipse cx="0" cy="300" rx="420" ry="300" fill="#fff" opacity="0.15" />
+    <text x="-420" y="-20" font-family="Georgia, serif" font-size="72" fill="#7b2d20">Timeless Beauty</text>
+    <text x="-420" y="40" font-family="sans-serif" font-size="28" fill="#4a2a22">Luxury anti-aging serum to hydrate, firm, and brighten your skin.</text>
+  </g>
+</svg>
