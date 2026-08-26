@@ -1,9 +1,9 @@
 export default function ResultsSection() {
   const stats = [
-    { label: 'Soft Matte Finish', value: '92%' },
-    { label: 'Long-Wear Coverage', value: '81%' },
-    { label: 'Skin-Friendly Glow', value: '87%' },
-    { label: 'Beauty Confidence', value: '94%' },
+    { label: 'Generous Product Size', value: '500G' },
+    { label: 'Orange Cream Care', value: 'CITRUS' },
+    { label: 'Gentle Scrub Step', value: 'SMOOTH' },
+    { label: 'Fresh-Looking Complexion', value: 'GLOW' },
   ]
 
   return (
@@ -24,7 +24,7 @@ export default function ResultsSection() {
         <div className="relative w-full rounded-2xl overflow-hidden shadow-xl">
           {/* Main Large Image */}
           <img 
-            src="/Home%20page%20images/f2e34db9-f663-4cf8-93a3-18f6539a7bb6.png" 
+            src="/Home%20page%20images/image.webp" 
             alt="Results Large" 
             className="w-full h-[550px] md:h-[650px] lg:h-[750px] object-cover" 
           />
