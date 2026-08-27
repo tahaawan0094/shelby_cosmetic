@@ -7,6 +7,7 @@ import Breadcrumb from '../../components/Breadcrumb'
 import ProductGallery from '../../components/ProductGallery'
 import ProductReviews from '../../components/ProductReviews'
 import ProductCard from '../../components/ProductCard'
+import VariantSelector from '../../components/VariantSelector'
 import SeoHead, { siteUrl } from '../../components/SeoHead'
 import RichText from '../../components/RichText'
 import { getImageUrl, getProductBySlug, getProductSlugs, getProducts } from '../../lib/products'
@@ -47,17 +48,30 @@ export default function ProductPage({ product, relatedProducts }) {
   const [activeTab, setActiveTab] = useState('description')
   const [quantity, setQuantity] = useState(1)
   const [addedNotify, setAddedNotify] = useState(false)
+  const [selectedVariant, setSelectedVariant] = useState(product.variants?.[0] || null)
+
+  const variantImages = product.variants?.flatMap((variant) => variant.images || []) || []
+  const selectedProduct = selectedVariant?.images?.length
+    ? {
+        ...product,
+        images: [
+          ...selectedVariant.images,
+          ...variantImages.filter((image) => !selectedVariant.images.includes(image))
+        ],
+        selectedVariant: selectedVariant.name
+      }
+    : product
 
   const inWishlist = isInWishlist(product.slug)
 
   const handleAddToCart = () => {
-    addToCart(product, quantity)
+    addToCart(selectedProduct, quantity)
     setAddedNotify(true)
     setTimeout(() => setAddedNotify(false), 2000)
   }
 
   const handleBuyItNow = () => {
-    setCheckoutItem({ ...product, quantity })
+    setCheckoutItem({ ...selectedProduct, quantity })
     router.push('/checkout')
   }
 
@@ -95,6 +109,7 @@ export default function ProductPage({ product, relatedProducts }) {
 
   const displayPrice = product.price || 0
   const displayOriginalPrice = product.originalPrice || product.price || 0
+  const advancePaymentSaving = displayPrice >= 1000 ? 100 : 50
   return (
     <>
       <SeoHead title={title} description={description} image={product.images?.[0]} schema={[productSchema, breadcrumbSchema]} />
@@ -110,7 +125,7 @@ export default function ProductPage({ product, relatedProducts }) {
             
             {/* Left Column: Gallery */}
             <div className="w-full lg:sticky lg:top-28">
-              <ProductGallery product={product} />
+              <ProductGallery key={selectedVariant?.name || 'default'} product={selectedProduct} />
             </div>
 
             {/* Right Column: Details */}
@@ -140,6 +155,8 @@ export default function ProductPage({ product, relatedProducts }) {
                 )}
               </div>
 
+              <VariantSelector variants={product.variants} onVariantChange={setSelectedVariant} />
+
               <span className="shine-badge mt-3 w-fit rounded-full bg-gradient-to-r from-[#c89211] via-[#f6d365] to-[#b7791f] px-3 py-1 text-[9px] font-bold uppercase tracking-[0.04em] text-[#171717]">
                 Limited Time Offer
               </span>
@@ -164,9 +181,25 @@ export default function ProductPage({ product, relatedProducts }) {
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-between text-sm font-medium text-neutral-700 max-w-sm">
-                <span>Subtotal:</span>
-                <span className="font-bold text-neutral-900">Rs. {displayPrice * quantity}</span>
+              <div className="mt-4 flex w-full max-w-sm items-center justify-between px-1 text-sm font-medium text-neutral-700">
+                <span className="leading-none">Subtotal:</span>
+                <span className="text-base font-bold leading-none text-neutral-900">Rs. {displayPrice * quantity}</span>
+              </div>
+
+              <div className="mt-5 grid w-full max-w-xl grid-cols-2 gap-2 sm:gap-3">
+                <div className="relative flex min-h-[125px] flex-col items-center justify-between overflow-hidden rounded-xl bg-gradient-to-br from-[#8f2349] to-[#be315b] p-1.5 text-center text-white sm:min-h-[160px] sm:rounded-2xl sm:p-3">
+                  <span className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-md bg-[#f3d37a] px-2 py-1 text-[7px] font-bold uppercase tracking-wider text-[#6d1e3d] sm:px-3 sm:text-[8px]">Save Rs. {advancePaymentSaving}</span>
+                  <p className="mt-4 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider sm:gap-2 sm:text-[11px]"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f3d37a] text-xs text-[#6d1e3d]">✓</span> Online Payment</p>
+                  <p className="text-lg font-bold tracking-tight sm:text-xl">Rs. {displayPrice - advancePaymentSaving}</p>
+                  <p className="text-[9px] text-white/75 sm:text-[11px]">Instant prepaid discount</p>
+                  <p className="border-t border-white/20 pt-2 text-[9px] font-bold uppercase tracking-[0.2em] text-[#f3d37a]">Recommended</p>
+                </div>
+                <div className="flex min-h-[125px] flex-col items-center justify-between rounded-xl bg-[#faf7f4] p-1.5 text-center text-[#252126] shadow-sm sm:min-h-[160px] sm:rounded-2xl sm:p-3">
+                  <p className="mt-4 flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider sm:gap-2 sm:text-[11px]"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#be315b] text-[10px] font-bold text-white">Rs</span> Cash on Delivery</p>
+                  <p className="text-lg font-bold tracking-tight text-[#be315b] sm:text-xl">Rs. {displayPrice}</p>
+                  <p className="text-[9px] text-neutral-600 sm:text-[11px]">Pay when order arrives</p>
+                  <p className="border-t border-[#be315b]/15 pt-2 text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500">Standard Price</p>
+                </div>
               </div>
 
               {/* Action Buttons & Wishlist */}

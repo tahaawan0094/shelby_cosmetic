@@ -4,6 +4,9 @@ import { getImageUrl } from '../lib/products'
 export default function ProductGallery({ product }) {
   const images = product?.images && product.images.length > 0 ? product.images : ['/placeholder.png']
   const [selectedImage, setSelectedImage] = useState(0)
+  const selectedImageSource = images[selectedImage]
+  const selectedImageUrl = typeof selectedImageSource === 'string' ? selectedImageSource : selectedImageSource?.url
+  const isGif = selectedImageUrl?.toLowerCase().endsWith('.gif')
 
   const discount = product?.originalPrice && product?.price && product.originalPrice > product.price
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
@@ -19,10 +22,10 @@ export default function ProductGallery({ product }) {
               key={index}
               type="button"
               onClick={() => setSelectedImage(index)}
-                className={`relative h-16 w-16 md:h-20 md:w-full aspect-square flex-shrink-0 overflow-hidden rounded-lg border-2 transition-all ${
+                className={`relative h-16 w-16 md:h-20 md:w-full aspect-square flex-shrink-0 overflow-hidden rounded-lg transition-all ${
                 selectedImage === index 
-                  ? 'border-[#be315b] opacity-100 shadow-sm' 
-                  : 'border-transparent opacity-60 hover:opacity-100'
+                  ? 'opacity-100 shadow-sm' 
+                  : 'opacity-60 hover:opacity-100'
               }`}
             >
               <img
@@ -36,11 +39,11 @@ export default function ProductGallery({ product }) {
       )}
 
       {/* Main Image Container */}
-      <div className="relative -ml-3 aspect-[6/7] min-h-[320px] max-h-[560px] w-[calc(100%+1.5rem)] items-center justify-center overflow-hidden rounded-lg border border-neutral-200/60 bg-white sm:-ml-5 sm:w-[calc(100%+2.5rem)] md:ml-0 md:w-auto">
+      <div className="relative -ml-3 aspect-[6/7] min-h-[320px] max-h-[560px] w-[calc(100%+1.5rem)] items-center justify-center overflow-hidden rounded-lg bg-white sm:-ml-5 sm:w-[calc(100%+2.5rem)] md:ml-0 md:w-auto">
         <img
           src={getImageUrl(images[selectedImage]) || images[selectedImage]}
           alt={product?.name || 'Product Image'}
-          className="block h-full w-full object-cover object-center transition-all duration-300"
+          className={`block h-full w-full object-cover object-center transition-all duration-300 ${isGif ? 'scale-[1.02]' : ''}`}
         />
 
         {discount > 0 && (
