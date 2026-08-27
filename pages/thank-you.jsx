@@ -125,6 +125,7 @@ export default function ThankYouPage() {
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-neutral-800 font-medium">{item.name}</span>
+                          {item.variant?.name && <span className="flex items-center gap-1.5 text-xs text-[#be315b]"><span className="h-3 w-3 rounded-full" style={{ backgroundColor: item.variant.value }} />Shade: {item.variant.name}</span>}
                           <span className="text-xs bg-neutral-100 px-2 py-0.5 rounded-full text-neutral-600 font-semibold">
                             ×{item.quantity}
                           </span>

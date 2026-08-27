@@ -491,6 +491,7 @@ export default function AdminOrdersPage() {
                             <div key={idx} className="py-2 flex justify-between items-start gap-2">
                               <div>
                                 <p className="font-medium text-slate-800">{item.name}</p>
+                                {item.variant?.name && <p className="flex items-center gap-1.5 text-[#be315b] text-[11px]"><span className="h-3 w-3 rounded-full" style={{ backgroundColor: item.variant.value }} />Shade: {item.variant.name} ({item.variant.value})</p>}
                                 <p className="text-slate-400 text-[11px]">Qty: {item.quantity} × Rs. {item.price}</p>
                               </div>
                               <span className="font-semibold text-slate-900">Rs. {item.price * item.quantity}</span>

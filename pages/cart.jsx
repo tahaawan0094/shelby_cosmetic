@@ -66,6 +66,7 @@ export default function CartPage() {
                           {item.name}
                         </Link>
                         <p className="text-sm text-neutral-500 mt-1">Rs. {item.price}</p>
+                        {item.selectedVariant?.name && <p className="text-xs text-[#be315b] mt-1">Shade: {item.selectedVariant.name}</p>}
                       </div>
                     </div>
 

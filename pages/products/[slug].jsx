@@ -51,14 +51,19 @@ export default function ProductPage({ product, relatedProducts }) {
   const [selectedVariant, setSelectedVariant] = useState(product.variants?.[0] || null)
 
   const variantImages = product.variants?.flatMap((variant) => variant.images || []) || []
-  const selectedProduct = selectedVariant?.images?.length
+  const selectedProduct = selectedVariant
     ? {
         ...product,
-        images: [
-          ...selectedVariant.images,
-          ...variantImages.filter((image) => !selectedVariant.images.includes(image))
-        ],
-        selectedVariant: selectedVariant.name
+        ...(selectedVariant.images?.length ? {
+          images: [
+            ...selectedVariant.images,
+            ...variantImages.filter((image) => !selectedVariant.images.includes(image))
+          ]
+        } : {}),
+        selectedVariant: {
+          name: selectedVariant.name,
+          value: selectedVariant.value
+        }
       }
     : product
 

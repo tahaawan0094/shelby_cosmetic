@@ -68,7 +68,8 @@ export default function CheckoutPage() {
           name: item.name,
           slug: item.slug,
           price: item.price,
-          quantity: item.quantity
+          quantity: item.quantity,
+          variant: item.selectedVariant || null
         })),
         subtotal,
         discount,
@@ -101,7 +102,7 @@ export default function CheckoutPage() {
       const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '923000000000'
       const cleanNumber = rawNumber.replace(/[^0-9]/g, '')
       const itemsList = checkoutList
-        .map(item => `• ${item.name} x${item.quantity} = Rs. ${item.price * item.quantity}`)
+        .map(item => `• ${item.name}${item.selectedVariant?.name ? ` (${item.selectedVariant.name})` : ''} x${item.quantity} = Rs. ${item.price * item.quantity}`)
         .join('\n')
 
       if (isOnlinePayment) {
@@ -411,7 +412,10 @@ export default function CheckoutPage() {
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-medium text-gray-900 line-clamp-2">{item.name}</h3>
+                      <div>
+                        <h3 className="text-sm font-medium text-gray-900 line-clamp-2">{item.name}</h3>
+                        {item.selectedVariant?.name && <p className="mt-1 flex items-center gap-1.5 text-xs text-[#be315b]"><span className="h-3 w-3 rounded-full" style={{ backgroundColor: item.selectedVariant.value }} />Shade: {item.selectedVariant.name}</p>}
+                      </div>
                     </div>
                     <p className="text-sm font-medium text-gray-900">Rs. {item.price * item.quantity}</p>
                   </div>
