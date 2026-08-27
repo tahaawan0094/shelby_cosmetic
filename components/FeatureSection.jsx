@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function FeatureSection() {
   return (
     <section className="py-12 md:py-24 bg-neutral-1 overflow-hidden">
@@ -6,24 +8,24 @@ export default function FeatureSection() {
         {/* Staggered Arch Images */}
         <div className="flex justify-center items-start gap-3 md:gap-8 mb-10 md:mb-20 px-2 md:px-0">
           
-          {/* 1st Image: Large Top-Left Arch */}
+          {/* 1st Image: Huda Beauty Product */}
           {/* Mobile par width 45% taake donon images barabar fit ayen */}
-          <div className="w-[45%] sm:w-64 md:w-[350px] h-48 sm:h-80 md:h-[420px] rounded-tl-[80px] sm:rounded-tl-[180px] md:rounded-tl-[200px] overflow-hidden shadow-sm bg-gray-100 flex-shrink-0">
+          <Link href="/products/huda-beauty-the-matte-fixer-setting-spray-160ml" className="block w-[45%] sm:w-64 md:w-[350px] h-48 sm:h-80 md:h-[420px] rounded-tl-[80px] sm:rounded-tl-[180px] md:rounded-tl-[200px] overflow-hidden shadow-sm bg-gray-100 flex-shrink-0">
             <img 
-              src="/Home%20page%20images/2ddad497-8876-42bd-918a-e60aedb39018.png" 
-              alt="Serum Feature 1" 
+              src="/Home%20page%20images/huda-beauty-product-image.webp" 
+              alt="Huda Beauty Product" 
               className="w-full h-full object-cover" 
             />
-          </div>
+          </Link>
 
           {/* 2nd Image: Large Top-Right Arch + Shifted Down */}
-          <div className="w-[45%] sm:w-64 md:w-[350px] h-48 sm:h-80 md:h-[420px] rounded-tr-[80px] sm:rounded-tr-[180px] md:rounded-tr-[200px] overflow-hidden shadow-sm bg-gray-100 flex-shrink-0 mt-8 sm:mt-14 md:mt-16">
+          <Link href="/products/dr-rashel-vitamin-c-brightening-anti-aging-face-serum" className="block w-[45%] sm:w-64 md:w-[350px] h-48 sm:h-80 md:h-[420px] rounded-tr-[80px] sm:rounded-tr-[180px] md:rounded-tr-[200px] overflow-hidden shadow-sm bg-gray-100 flex-shrink-0 mt-8 sm:mt-14 md:mt-16">
             <img 
-              src="/Home%20page%20images/f2e34db9-f663-4cf8-93a3-18f6539a7bb6.png" 
-              alt="Serum Feature 2" 
+              src="/Home%20page%20images/dr-rasheel-serum-image.webp" 
+              alt="Dr Rashel Serum" 
               className="w-full h-full object-cover" 
             />
-          </div>
+          </Link>
 
         </div>
 

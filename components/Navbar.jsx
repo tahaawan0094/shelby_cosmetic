@@ -169,7 +169,7 @@ export default function Navbar({ solid = false }) {
           <p className={`hidden lg:block absolute left-0 whitespace-nowrap transition-all duration-500 ${
             isSolid ? 'opacity-0 translate-y-4 pointer-events-none' : 'opacity-80 translate-y-0 text-white'
           }`}>
-            Shelby Cosmetics - Luxury Skincare and Hair care products
+            Luxury Skincare and Hair care products
           </p>
           
           <Link href="/" className={`absolute left-0 flex items-center gap-1.5 transition-all duration-500 text-neutral-900 ${

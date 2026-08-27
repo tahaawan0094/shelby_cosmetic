@@ -7,7 +7,7 @@ export default function DealSection() {
       title: 'Makeup Steal',
       description: 'Flash Sale! Flawless coverage for less — top foundations from Huda Beauty, Dermacol & emelie Paris at unbeatable prices.',
       badge: 'SALE',
-      background: 'linear-gradient(135deg, rgba(26,18,15,0.25), rgba(92,56,35,0.2)), url("/Home%20page%20images/Deals%20section%20images/MAKEUP.webp")',
+      background: 'linear-gradient(135deg, rgba(26,18,15,0.25), rgba(92,56,35,0.2)), url("/Home%20page%20images/makeup-deal.webp")',
       button: 'SHOP NOW',
       href: '/collections/foundation'
     },
@@ -16,7 +16,7 @@ export default function DealSection() {
       title: 'Skincare Reset',
       description: 'Brighten, hydrate, repeat. Vitamin C serums, sheet masks & facial kits — now on sale.',
       badge: 'SALE',
-      background: 'linear-gradient(135deg, rgba(22,18,14,0.25), rgba(72,62,48,0.2)), url("/Home%20page%20images/Deals%20section%20images/SKINCARE.webp")',
+      background: 'linear-gradient(135deg, rgba(22,18,14,0.25), rgba(72,62,48,0.2)), url("/Home%20page%20images/skincare-deal.webp")',
       button: 'SHOP NOW',
       href: '/collections/serum'
     },
@@ -25,7 +25,7 @@ export default function DealSection() {
       title: 'Nail It',
       description: 'Salon-quality press-on nails and long-wear polish, ready to ship to your door.',
       badge: 'SALE',
-      background: 'linear-gradient(135deg, rgba(24,19,12,0.33), rgba(81,79,38,0.25)), url("/Home%20page%20images/Deals%20section%20images/NAIL.webp")',
+      background: 'linear-gradient(135deg, rgba(24,19,12,0.33), rgba(81,79,38,0.25)), url("/Home%20page%20images/nail-deal.webp")',
       button: 'SHOP NOW',
       href: '/collections/press-on-nails'
     },
@@ -34,7 +34,7 @@ export default function DealSection() {
       title: 'Self-Care Sunday',
       description: 'Stock up on hand & foot masks, waxing kits, and styling tools for your at-home spa day.',
       badge: 'SALE',
-      background: 'linear-gradient(135deg, rgba(22,16,13,0.25), rgba(98,75,56,0.25)), url("/Home%20page%20images/Deals%20section%20images/SELF.webp")',
+      background: 'linear-gradient(135deg, rgba(22,16,13,0.25), rgba(98,75,56,0.25)), url("/Home%20page%20images/selfcare-deal.jpg")',
       button: 'SHOP NOW',
       href: '/collections/hand-mask'
     }

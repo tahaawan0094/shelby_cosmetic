@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function BenefitsSection() {
   return (
     <section className="hidden w-full overflow-hidden bg-[#FAF8F5] py-12 sm:block md:py-24">
@@ -6,13 +8,13 @@ export default function BenefitsSection() {
         {/* Left Side: Extra Large Feature Image */}
         <div className="lg:col-span-6 w-full flex justify-center lg:justify-start">
           {/* Adjusted border-radius for smoother look like the image */}
-          <div className="w-full max-w-[650px] aspect-square rounded-[32px] sm:rounded-[40px] overflow-hidden shadow-sm bg-gray-100">
+          <Link href="/collections/foundation" className="block w-full max-w-[650px] aspect-square rounded-[32px] sm:rounded-[40px] overflow-hidden shadow-sm bg-gray-100">
               <img 
-              src="/Home%20page%20images/section-image.webp" 
-              alt="Our Formula Feature" 
+              src="/Home%20page%20images/beauty-essentials-section.webp" 
+              alt="Beauty Essentials" 
               className="w-full h-full object-cover" 
             />
-          </div>
+          </Link>
         </div>
 
         {/* Right Side: Header + Enlarged Staggered Cards Grid */}

@@ -11,7 +11,7 @@ export default function PurchaseSection({ products = [] }) {
     <section className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
       
       {/* Full-width Edge-to-Edge Background Image */}
-      <Image src="/Home%20page%20images/last-section-image-shleb-cosmetic.webp" alt="Shelby Cosmetics beauty collection" fill sizes="100vw" className="object-cover object-center" priority />
+      <Image src="/Home%20page%20images/beauty-routine-section-images.webp" alt="Beauty routine" fill sizes="100vw" className="object-cover object-center" priority />
       
       {/* Subtle Overlay to make text readable */}
       <div className="absolute inset-0 bg-black/20 pointer-events-none" />
