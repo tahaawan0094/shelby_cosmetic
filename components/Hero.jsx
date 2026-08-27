@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <>
     {/* FIX 1: Use h-screen and justify-end to force content to the bottom edge */}
-    <section className="relative w-full min-h-[700px] md:h-screen flex flex-col justify-end">
+    <section className="relative aspect-[1030/1536] w-full min-h-0 flex flex-col justify-end md:aspect-auto md:min-h-[700px] md:h-screen">
       
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
