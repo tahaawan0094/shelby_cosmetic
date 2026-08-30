@@ -3,7 +3,7 @@ import { getProductSlugs, getCollectionSlugs } from '../lib/products'
 export async function getServerSideProps({ res }) {
   const products = await getProductSlugs()
   const collections = await getCollectionSlugs()
-  const baseUrl = 'https://shelbycosmetics.com'
+  const baseUrl = 'https://www.shelbycosmetic.com'
   const staticRoutes = ['', '/products', '/face', '/eyes', '/about', '/contact', '/faqs', '/privacy-policy', '/terms-conditions', '/refund-policy', '/shipping-delivery-policy']
   const collectionRoutes = collections.map(({ slug }) => `/collections/${slug}`)
   const urls = [...staticRoutes, ...collectionRoutes, ...products.map(({ slug }) => `/products/${slug}`)]

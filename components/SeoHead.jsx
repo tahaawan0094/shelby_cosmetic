@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { getSanityImageUrl } from '../lib/images'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shelbycosmetics.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.shelbycosmetic.com'
 
 export default function SeoHead({ title, description, image, schema = [] }) {
   const router = useRouter()
