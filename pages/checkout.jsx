@@ -349,9 +349,14 @@ export default function CheckoutPage() {
                     <div className="flex w-full items-center justify-between">
                       <div className="flex items-center">
                         <div className="text-sm">
-                          <p className="font-medium text-gray-900">Cash on Delivery (COD)</p>
+                          <p className="font-medium text-gray-900 flex items-center gap-2">
+                            Cash on Delivery (COD)
+                            <span className="bg-[#be315b] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
+                              Delivery Advance
+                            </span>
+                          </p>
                           <p className={`mt-1 text-xs ${paymentMethod === 'COD' ? 'text-[#be315b]' : 'text-gray-500'}`}>
-                            Pay cash when your order arrives.
+                            Delivery charges are paid in advance; remaining amount is paid on delivery.
                           </p>
                         </div>
                       </div>
