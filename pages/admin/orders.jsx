@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import FooterSection from '../../components/FooterSection'
 import SeoHead from '../../components/SeoHead'
+import PrintLabel from '../../components/PrintLabel'
 
 export default function AdminOrdersPage() {
   const [passcode, setPasscode] = useState('')
@@ -15,6 +16,8 @@ export default function AdminOrdersPage() {
   const [copiedId, setCopiedId] = useState(null)
   const [deletingId, setDeletingId] = useState(null)
   const [isDeletingAll, setIsDeletingAll] = useState(false)
+  const [printLabelOrder, setPrintLabelOrder] = useState(null)
+  const [showPrintLabel, setShowPrintLabel] = useState(false)
 
   // Delete Modals State
   const [deleteModal, setDeleteModal] = useState({
@@ -216,6 +219,16 @@ export default function AdminOrdersPage() {
     <>
       <SeoHead title="Orders Management | Admin" description="Real-time store management." />
       
+      {/* ===================== PRINT LABEL MODAL ===================== */}
+      <PrintLabel
+        order={printLabelOrder}
+        isOpen={showPrintLabel}
+        onClose={() => {
+          setShowPrintLabel(false)
+          setPrintLabelOrder(null)
+        }}
+      />
+
       {/* ===================== TOAST NOTIFICATION ===================== */}
       <div className="fixed top-24 right-5 z-50 pointer-events-none transition-all duration-300">
         {toast.show && (
@@ -266,7 +279,7 @@ export default function AdminOrdersPage() {
               onClick={() => setToast((prev) => ({ ...prev, show: false }))}
               className="ml-2 text-white/50 hover:text-white transition p-0.5"
             >
-              ✕
+              Ã¢Å“â€¢
             </button>
           </div>
         )}
@@ -461,6 +474,25 @@ export default function AdminOrdersPage() {
                         </select>
 
                         <button
+                          onClick={() => {
+                            setPrintLabelOrder(order)
+                            setShowPrintLabel(true)
+                          }}
+                          className="flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-md border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition cursor-pointer"
+                          title="Print Shipping Label"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="1.8"
+                              d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4H9a2 2 0 01-2-2v-4a2 2 0 012-2h10a2 2 0 012 2v4a2 2 0 01-2 2m-6 4h6"
+                            />
+                          </svg>
+                          <span>Print Label</span>
+                        </button>
+
+                        <button
                           onClick={() => promptDeleteSingle(order)}
                           className="flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-md border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 hover:border-red-300 transition cursor-pointer"
                           title="Delete Order"
@@ -492,7 +524,7 @@ export default function AdminOrdersPage() {
                               <div>
                                 <p className="font-medium text-slate-800">{item.name}</p>
                                 {item.variant?.name && <p className="flex items-center gap-1.5 text-[#be315b] text-[11px]"><span className="h-3 w-3 rounded-full" style={{ backgroundColor: item.variant.value }} />Shade: {item.variant.name} ({item.variant.value})</p>}
-                                <p className="text-slate-400 text-[11px]">Qty: {item.quantity} × Rs. {item.price}</p>
+                                <p className="text-slate-400 text-[11px]">Qty: {item.quantity} Ãƒâ€” Rs. {item.price}</p>
                               </div>
                               <span className="font-semibold text-slate-900">Rs. {item.price * item.quantity}</span>
                             </div>
@@ -565,3 +597,7 @@ export default function AdminOrdersPage() {
     </>
   )
 }
+
+
+
+

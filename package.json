@@ -10,6 +10,7 @@
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "framer-motion": "10.12.16",
+    "jsbarcode": "^3.12.3",
     "mongoose": "^9.9.3",
     "next": "13.4.10",
     "nodemailer": "^9.0.5",
