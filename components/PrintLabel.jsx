@@ -7,6 +7,15 @@ export default function PrintLabel({ order, isOpen, onClose }) {
 
   const shortId = `ORD-${order._id.slice(-8).toUpperCase()}`
   const orderDate = new Date(order.createdAt).toLocaleDateString('en-PK')
+  const shippingFee = Number(order.shippingFee || 0)
+  const codAdvancePaid = order.paymentMethod === 'COD' ? shippingFee : 0
+  const remainingAmount = order.paymentMethod === 'COD'
+    ? Math.max(0, Number(order.total || 0) - codAdvancePaid)
+    : Number(order.total || 0)
+  const totalLabelText = order.paymentMethod === 'COD' ? 'Remaining Amount' : 'TOTAL AMOUNT'
+  const paymentSummaryText = order.paymentMethod === 'COD'
+    ? `COD Advance Paid: Rs. ${shippingFee}`
+    : 'Full Payment Advance'
 
   const handlePrint = () => {
     const printWindow = window.open('', '', 'height=600,width=800')
@@ -173,11 +182,38 @@ export default function PrintLabel({ order, isOpen, onClose }) {
             font-family: 'Courier New', monospace;
             letter-spacing: 1px;
           }
+          .payment-summary {
+            font-size: 9px;
+            font-weight: 700;
+            color: #444;
+            margin-top: 0.08in;
+            line-height: 1.5;
+          }
           .payment-method {
             font-size: 9px;
             font-weight: 500;
             color: #666;
             margin-top: 0.05in;
+          }
+          .return-address {
+            border: 1px solid #000;
+            padding: 0.12in;
+            margin-top: 0.15in;
+            background: #fafafa;
+            line-height: 1.5;
+          }
+          .return-address-title {
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0.04in;
+          }
+          .return-address-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #000;
           }
           .footer-section {
             text-align: center;
@@ -248,12 +284,22 @@ export default function PrintLabel({ order, isOpen, onClose }) {
           <!-- Total -->
           <div class="total-section">
             <div class="total-row">
-              <span class="total-label">TOTAL AMOUNT:</span>
-              <span class="total-amount">Rs. ${order.total}</span>
+              <span class="total-label">${totalLabelText}:</span>
+              <span class="total-amount">Rs. ${remainingAmount}</span>
+            </div>
+            <div class="payment-summary">
+              ${order.paymentMethod === 'COD'
+                ? `COD Advance Paid: Rs. ${shippingFee}<br/>Remaining Amount: Rs. ${remainingAmount}`
+                : `Full Payment Advance: Rs. ${order.total}`}
             </div>
             <div class="payment-method">
               Payment Method: ${order.paymentMethod === 'COD' ? 'Cash on Delivery' : order.paymentMethod}
             </div>
+          </div>
+
+          <div class="return-address">
+            <div class="return-address-title">Return Address</div>
+            <div class="return-address-text">Agra Taj Colony Taj Masjid Road Street G 10<br/>Shelby Cosmetic WareHouse</div>
           </div>
 
           <!-- Footer -->
@@ -411,13 +457,31 @@ export default function PrintLabel({ order, isOpen, onClose }) {
               {/* Total Section */}
               <div className="border-t-2 border-slate-900 pt-4">
                 <div className="flex justify-between items-baseline mb-2">
-                  <span className="text-xs font-bold text-slate-700">TOTAL AMOUNT:</span>
+                  <span className="text-xs font-bold text-slate-700">{totalLabelText}:</span>
                   <span className="text-2xl font-black text-slate-900 font-mono">
-                    Rs. {order.total}
+                    Rs. {remainingAmount}
                   </span>
+                </div>
+                <div className="mb-2 space-y-1 text-[11px] text-slate-700 font-semibold">
+                  {order.paymentMethod === 'COD' ? (
+                    <>
+                      <p>COD Advance Paid: Rs. {shippingFee}</p>
+                      <p>Remaining Amount: Rs. {remainingAmount}</p>
+                    </>
+                  ) : (
+                    <p>Full Payment Advance: Rs. {order.total}</p>
+                  )}
                 </div>
                 <p className="text-xs text-slate-600 font-semibold">
                   Payment Method: {order.paymentMethod === 'COD' ? 'Cash on Delivery' : order.paymentMethod}
+                </p>
+              </div>
+
+              <div className="mt-6 border border-slate-900 bg-slate-50 p-3">
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-600 mb-2">Return Address</p>
+                <p className="text-sm font-bold text-slate-900 leading-relaxed">
+                  Agra Taj Colony Taj Masjid Road Street G 10<br />
+                  Shelby Cosmetic WareHouse
                 </p>
               </div>
 
