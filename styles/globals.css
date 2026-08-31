@@ -170,9 +170,72 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.whatsapp-float-button {
+  position: fixed;
+  right: 20px; /* Thoda space barhaya hai better look ke liye */
+  bottom: 20px;
+  z-index: 9999;
+  display: flex; /* Inline-flex ki jagah flex use karein for perfect centering */
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Button ka size thoda adjust kiya hai */
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366; /* Exact WhatsApp green color jesa 1st image mein hai */
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4); /* Shadow ko thoda soft kiya hai */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.whatsapp-float-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+  filter: brightness(1.05);
+}
+
+.whatsapp-float-button:active {
+  transform: scale(0.95);
+}
+
+.whatsapp-float-button svg {
+  width: 36px; /* Icon ka size 28px se badha kar 36px kar diya hai */
+  height: 36px;
+  display: block;
+  fill: currentColor; /* Ensure karta hai ke SVG proper white fill ho */
+}
+
+@media (max-width: 640px) {
+  .whatsapp-float-button {
+    width: 54px;
+    height: 54px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .whatsapp-float-button svg {
+    width: 32px; /* Mobile par bhi icon ko proportionate rakha hai */
+    height: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .whatsapp-float-button {
+    width: 54px;
+    height: 54px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .whatsapp-float-button svg {
+    width: 24px;
+    height: 24px;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .category-marquee,
   .shine-badge::after,
-  .announcement-track { animation: none; }
+  .announcement-track,
+  .whatsapp-float-button { animation: none; }
 }
