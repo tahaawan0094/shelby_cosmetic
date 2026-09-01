@@ -95,6 +95,8 @@ export default function FooterSection() {
                 <h4 className="font-serif text-lg font-medium text-white mb-5">Company</h4>
                 <ul className="space-y-3 text-sm text-white">
                   <li><a href="/about" className="hover:opacity-80 transition-opacity">About Us</a></li>
+                  <li><a href="/blogs" className="hover:opacity-80 transition-opacity">Blogs</a></li>
+                  <li><a href="/reviews" className="hover:opacity-80 transition-opacity">Reviews</a></li>
                   <li><a href="/privacy-policy" className="hover:opacity-80 transition-opacity">Privacy Policy</a></li>
                   <li><a href="/terms-conditions" className="hover:opacity-80 transition-opacity">Terms and Conditions</a></li>
                 </ul>

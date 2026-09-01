@@ -49,8 +49,8 @@ export default function Home({ products = [], categories = [], collections = [] 
   return (
     <>
       <SeoHead
-        title="Shelby Cosmetics | Best Online Cosmetics Store in Pakistan"
-        description="Buy cosmetics online in Pakistan at Shelby Cosmetics — imported makeup & skincare at the best price. Karachi-based online cosmetics store, nationwide delivery."
+        title="Shelby Cosmetics | Makeup, Skincare & Beauty Essentials in Pakistan"
+        description="Shop Shelby Cosmetics for makeup, skincare, nail art, hair tools & body care trusted beauty brands, unbeatable prices, fast delivery across Pakistan."
       />
       <div className="min-h-screen bg-white">
         <Navbar />

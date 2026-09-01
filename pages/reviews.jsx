@@ -1,6 +1,6 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import SeoHead from '../components/SeoHead'
 import Navbar from '../components/Navbar'
 import FooterSection from '../components/FooterSection'
 import { reviews } from '../lib/reviews'
@@ -28,10 +28,10 @@ export default function ReviewsPage() {
 
   return (
     <>
-      <Head>
-        <title>Customer Reviews | Shelby Cosmetics</title>
-        <meta name="description" content="Read real customer reviews from Shelby Cosmetics customers and discover our best-loved products." />
-      </Head>
+      <SeoHead
+        title="Customer Reviews | Read Shelby Cosmetics Reviews Before You Buy"
+        description="Read verified customer reviews of Shelby Cosmetics — real feedback on our imported makeup, skincare & nationwide delivery across Pakistan."
+      />
 
       <div className="min-h-screen bg-[#f7f5f2] text-neutral-900">
         <Navbar solid />
@@ -39,20 +39,23 @@ export default function ReviewsPage() {
         {/* Yahan pt-32 aur lg:pt-40 add kiya hai taake navbar ke neeche space aa jaye */}
         <main className="mx-auto max-w-[1400px] px-4 pt-32 pb-12 sm:px-8 lg:px-10 lg:pt-40 lg:pb-16">
           <div className="mb-10 text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#c62c52]">Customer happiness</p>
-            <h1 className="font-serif text-5xl leading-none text-neutral-900 sm:text-6xl lg:text-[6rem]">
-              Featured Customer Testimonials
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#c62c52]">Reviews</p>
+            <h1 className="font-serif text-5xl leading-none text-neutral-900 sm:text-6xl lg:text-[5.5rem]">
+              What Our Customers Are Saying
             </h1>
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-neutral-600 sm:text-lg">
+              Real feedback from real customers who've shopped imported makeup, skincare and beauty essentials from Shelby Cosmetics. We publish every verified review good or bad because trust matters more than a perfect rating.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {visibleReviews.map((review, index) => (
               <article
                 key={`${review.id}-${index}`}
-                className="relative flex min-h-[420px] flex-col justify-between rounded-[22px] border border-neutral-200 bg-white p-7 shadow-[0_8px_24px_rgba(15,23,42,0.04)]"
+                className="relative flex h-full flex-col rounded-[22px] border border-neutral-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]"
               >
-                <div>
-                  <div className="mb-6 text-[#c62c52]" aria-hidden="true">
+                <div className="flex-1">
+                  <div className="mb-4 text-[#c62c52]" aria-hidden="true">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 2L14.5 4.5L12 7L9.5 4.5L12 2Z"/>
                       <path d="M5 9L7.5 11.5L5 14L2.5 11.5L5 9Z"/>
@@ -61,33 +64,19 @@ export default function ReviewsPage() {
                     </svg>
                   </div>
 
-                  <h2 className="mb-5 text-3xl font-medium tracking-[-0.04em] text-neutral-900 sm:text-[2rem]">
-                    {review.name}
-                  </h2>
-
-                  <div className="mb-5 flex gap-1 text-lg text-[#0f8ca9]">
+                  <div className="mb-3 flex gap-1 text-lg text-[#0f8ca9]">
                     {Array.from({ length: review.rating }).map((_, starIndex) => (
                       <span key={starIndex}>★</span>
                     ))}
                   </div>
 
-                  <p className="text-lg leading-8 text-neutral-700 sm:text-[1.05rem]">
+                  <p className="text-base leading-7 text-neutral-700">
                     {review.text}
                   </p>
                 </div>
 
-                <div className="mt-8 flex items-center justify-between border-t border-neutral-200 pt-5">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={review.avatar}
-                      alt={review.name}
-                      className="h-11 w-11 rounded-full object-cover"
-                    />
-                    <div>
-                      <p className="text-sm font-semibold text-neutral-900">{review.name}</p>
-                      <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">Verified buyer</p>
-                    </div>
-                  </div>
+                <div className="mt-auto flex items-center justify-between border-t border-neutral-200 pt-4">
+                  <p className="text-sm font-semibold text-neutral-900">{review.name}</p>
 
                   <div className="rounded-full bg-[#f3f4f6] px-3 py-1 text-xs font-semibold text-neutral-700">
                     {formatNumber(index + 1)}

@@ -49,20 +49,50 @@ export default function Contact() {
 
   return (
     <InfoPage
-      title="Contact Us"
-      eyebrow="We are here for you"
-      intro="Have a question about a formula, your order, or building a better routine? Send us a note and our team will get back to you as soon as possible."
+      title="Get In Touch!"
+      eyebrow="Contact Us"
+      intro="We'd love to hear from you - please use the form to send us your message or ideas. Or simply pop in for a cup of fresh tea and a cookie:"
+      seoTitle="Contact Us | Shelby Cosmetics – We're Here to Help"
+      seoDescription="Get in touch with Shelby Cosmetics for order support, product questions, or feedback. Reach our team by email, phone, or the contact form below."
     >
       <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr]">
         <div className="space-y-8">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-rose-600">Customer care</p>
-            <h2 className="mt-3 text-3xl">A thoughtful answer is only a note away.</h2>
+          <div className="space-y-4 text-sm leading-7 text-neutral-600">
+            <p>
+              <a href="tel:+923113041704" className="hover:text-rose-600">+92 3113041704</a>
+            </p>
+            <p>
+              <a href="mailto:shelbycosmetic18@gmail.com" className="hover:text-rose-600">
+                shelbycosmetic18@gmail.com
+              </a>
+            </p>
           </div>
-          <div className="space-y-5 text-sm leading-7 text-neutral-600">
-            <p>Email: hello@shelbycosmetics.com</p>
-            <p>Monday-Friday, 9:00 AM-6:00 PM</p>
-            <p>We aim to reply within 1-2 business days.</p>
+
+          <div>
+            <h2 className="text-2xl md:text-3xl">Order Tracking</h2>
+            <p className="mt-4 text-sm leading-7 text-neutral-600">
+              <a href="mailto:shelbycosmetic18@gmail.com" className="hover:text-rose-600">
+                shelbycosmetic18@gmail.com
+              </a>
+            </p>
+            <p className="mt-4 text-sm leading-7 text-neutral-600">
+              Serving customers nationwide from our distribution center in Block 9 Clifton Karachi, Pakistan.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl md:text-3xl">Why Reach Out to Us?</h2>
+            <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-neutral-600">
+              <li>
+                <strong className="text-neutral-900">Quick Response:</strong> We typically reply to all inquiries within 24 hours.
+              </li>
+              <li>
+                <strong className="text-neutral-900">Expert Advice:</strong> Not sure which skincare product is right for you? Ask our experts!
+              </li>
+              <li>
+                <strong className="text-neutral-900">Order Support:</strong> Real-time updates on your shipping and delivery status.
+              </li>
+            </ol>
           </div>
         </div>
 

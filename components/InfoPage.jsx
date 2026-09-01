@@ -2,13 +2,12 @@ import Head from 'next/head'
 import Navbar from './Navbar'
 import FooterSection from './FooterSection'
 
-export default function InfoPage({ title, eyebrow = 'Shelby Cosmetics', intro, sections = [], children }) {
+export default function InfoPage({ title, eyebrow = 'Shelby Cosmetics', intro, sections = [], children, seoTitle, seoDescription }) {
   return (
     <>
       <Head>
-        {/* Yahan fix apply kiya gaya hai */}
-        <title>{`${title} | Shelby Cosmetics`}</title>
-        <meta name="description" content={intro} />
+        <title>{seoTitle || `${title} | Shelby Cosmetics`}</title>
+        <meta name="description" content={seoDescription || intro} />
       </Head>
       <div className="min-h-screen bg-neutral-1 text-neutral-900">
         <Navbar solid />

@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import SeoHead from '../../components/SeoHead'
 import Navbar from '../../components/Navbar'
 import FooterSection from '../../components/FooterSection'
 import ProductCard from '../../components/ProductCard'
@@ -66,25 +66,27 @@ export default function AllCollectionsPage({ products = [], collections = [] }) 
 
   return (
     <>
-      <Head>
-        <title>All Products | Shelby Cosmetics</title>
-        <meta name="description" content="Shop all Shelby Cosmetics products in one collection." />
-      </Head>
+      <SeoHead
+        title="Buy Makeup & Cosmetics Online in Pakistan | Shelby Cosmetics"
+        description="Shop imported makeup, skincare & nail products from Huda Beauty, Dermacol & more. Affordable prices, nationwide delivery across Pakistan."
+      />
       <div className="min-h-screen bg-white text-[#141414]">
         <Navbar solid />
         <main className="mx-auto max-w-[1400px] px-2 pb-20 pt-28 sm:px-4 md:px-8 md:pt-32">
           <div className="mb-4 flex items-center gap-2 text-xs text-neutral-500">
             <Link href="/" className="hover:text-black">Home</Link>
             <span>›</span>
-            <span className="text-black">All Products</span>
+            <span className="text-black">Shop All</span>
           </div>
 
           <div className="mb-10">
-            <p className="text-sm font-medium text-neutral-600">Shelby Cosmetics</p>
+            <p className="text-sm font-medium text-neutral-600">Shop All</p>
             <h1 className="mt-2 text-3xl font-semibold leading-tight text-black md:text-4xl">{searchQuery ? `Search results for "${searchQuery}"` : 'All Products Collection'}</h1>
-            <p className="mt-4 max-w-5xl text-sm leading-relaxed text-neutral-600">
-              Explore every product from Shelby Cosmetics, selected for your everyday beauty routine.
-            </p>
+            {!searchQuery && (
+              <p className="mt-4 max-w-5xl text-sm leading-relaxed text-neutral-600">
+                From imported makeup and skincare to nail art and beauty tools, explore Shelby Cosmetics' full collection trusted brands like Huda Beauty, Dermacol and emelie Paris, at honest prices, delivered nationwide across Pakistan.
+              </p>
+            )}
           </div>
 
           <div className="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)]">
